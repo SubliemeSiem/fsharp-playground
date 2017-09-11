@@ -10,12 +10,10 @@
 
   <ItemGroup>
     <PackageReference Include="Suave" Version="2.2.1" />
-    <Compile Include="PageFactory.fs" />
+    <Compile Include="Page.fs" />
     <Compile Include="StaticAssets.fs" />
     <Compile Include="TempAssets.fs" />
-    <!-- <Compile Include="SocketMailBox.fs" /> -->
     <Compile Include="WebSocket.fs" />
-    <!-- <Compile Include="MailBoxSocket.fs" /> -->
     <Compile Include="Routing.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>

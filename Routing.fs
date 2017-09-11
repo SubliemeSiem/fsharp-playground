@@ -6,16 +6,17 @@ open Suave.Filters
 open Suave.Operators
 open Suave.Successful
 
-open PageFactory
+open Page
 open StaticAssets
 open TempAssets
 open WebSocket
 
 module Routing =
     let pageOrContent (link : string) =
-        request (fun req -> match req.queryParam "onlyContent" with
-                            | Choice1Of2 onlyContent -> OK (contentResponse (title link) link (content link))
-                            | _ -> OK (page link "/" scripts styleSheets inlineStyle links (content link) messages))
+        request (fun req -> printfn "%O" (req.queryParam "onlyContent")
+                            match req.queryParam "onlyContent" with
+                            | Choice1Of2 onlyContent -> OK (Page.ContentResponse (title link) link (content link))
+                            | _ -> OK (Page.Html link "/" scripts styleSheets inlineStyle links (content link) messages))
 
     // handshake opslaan
     // index teruggeven met response?
@@ -33,7 +34,6 @@ module Routing =
                   pathScan "/fonts/%s" (sprintf "./fonts/%s" >> file)
                   path "/serviceworker.js" >=> file "./public/serviceworker.js" ]
               POST >=> choose
-                [ path "/test" >=> request (fun req -> socketMessageEvent.SendMessage "{ \"action\": \"new post\", \"data\": \"Test passed!\"  }"
-                                                       //socketMailBox.Post (AddToQueue (Choice1Of2 "{ \"action\": \"new post\", \"data\": \"Test passed!\"  }"))
+                [ path "/test" >=> request (fun req -> socketMessage.Send "{ \"action\": \"new post\", \"data\": \"Test passed!\"  }"
                                                        OK "") ]
             ]

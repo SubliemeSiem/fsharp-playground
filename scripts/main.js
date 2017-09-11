@@ -11,7 +11,7 @@
                 if (setHistory) {
                     history.pushState({ page: response.page }, response.title, `/${response.page}`);
                 }
-                toggleLinks(page);
+                toggleLinks(page.substr(1));
             },
             function(failure) {
                 alert(failure);
@@ -51,14 +51,13 @@
     window.addEventListener('popstate', function(e) {
         if (e.state) {
             console.log(e.state);
-            openPage(e.state.page);
+            openPage(e.state.url || `/${e.state.page}`);
         }
     });
 
     onPageLoad(function() {
         const page = window.location.pathname.slice(1);
-        console.log(page);
-        history.replaceState({ page: page }, window.title);
+        history.replaceState({ page: page }, window.title, window.location.pathname);
         toggleLinks(page);
     });
 

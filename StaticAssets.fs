@@ -20,7 +20,13 @@ module StaticAssets =
           "Test" ]
 
     let inlineStyle : string = 
-        """        * {
+        """@font-face { 
+            font-family: FiraCode; src: url('fonts/FiraCode-Regular.otf'); 
+        }
+        @font-face {
+            font-family: FiraCode; font-weight: bold; src: url('fonts/FiraCode-Bold.otf'); 
+        }
+        * {
             outline: none;
             box-sizing: border-box;
         }
@@ -382,4 +388,16 @@ module StaticAssets =
             -moz-hyphens: auto;
             -webkit-hyphens: auto;
             hyphens: auto;
+        }
+        .code-block {
+            font-family: FiraCode;
+            font-size: .8rem;
+            line-height: 1rem;
+            margin: .5rem;
+            padding: .5rem;
+            background-color: #d4d4d4;
+            border-top: 1px solid #a0a0a0;
+            border-bottom: 1px solid #a0a0a0;
+            border-left: .3rem solid #5d1d1d;
+            border-right: none;
         }"""
