@@ -12,10 +12,15 @@ open TempAssets
 open WebSocket
 
 module Routing =
+    let (|OnlyContent|FullPage|) (req : Choice<string, string>) =
+        match req with
+        | Choice1Of2 x -> OnlyContent
+        | Choice2Of2 x -> FullPage
+
     let pageOrContent (link : string) =
         request (fun req -> match req.queryParam "onlyContent" with
-                            | Choice1Of2 onlyContent -> OK (Page.ContentResponse (title link) link (content link))
-                            | _ -> OK (Page.Html link "/" scripts styleSheets inlineStyle links (content link) messages))
+                            | OnlyContent -> OK (Page.ContentResponse (title link) link (content link))
+                            | FullPage -> OK (Page.Html link "/" scripts styleSheets inlineStyle links (content link) messages))
 
     let app : WebPart =
         choose 
