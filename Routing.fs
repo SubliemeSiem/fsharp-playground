@@ -13,8 +13,7 @@ open WebSocket
 
 module Routing =
     let pageOrContent (link : string) =
-        request (fun req -> printfn "%O" (req.queryParam "onlyContent")
-                            match req.queryParam "onlyContent" with
+        request (fun req -> match req.queryParam "onlyContent" with
                             | Choice1Of2 onlyContent -> OK (Page.ContentResponse (title link) link (content link))
                             | _ -> OK (Page.Html link "/" scripts styleSheets inlineStyle links (content link) messages))
 
