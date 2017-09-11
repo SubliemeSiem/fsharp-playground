@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <RuntimeIdentifiers>win7-x64;ubuntu.16.04-x64</RuntimeIdentifiers>
+    <FscToolPath>/usr/lib/mono/fsharp</FscToolPath>
+    <FscToolExe>fsc.exe</FscToolExe>    
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Suave" Version="2.2.1" />
+    <Compile Include="PageFactory.fs" />
+    <Compile Include="StaticAssets.fs" />
+    <Compile Include="TempAssets.fs" />
+    <!-- <Compile Include="SocketMailBox.fs" /> -->
+    <Compile Include="WebSocket.fs" />
+    <!-- <Compile Include="MailBoxSocket.fs" /> -->
+    <Compile Include="Routing.fs" />
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+
+</Project>
