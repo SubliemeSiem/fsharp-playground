@@ -40,7 +40,7 @@ A project to play around with *JavaScript* and *F#* using *Suave*. Will feature 
 - [ ] Promises
   - [x] [create](scripts/ajax.js)
   - [ ] use
-- [x] [F# fold](PageFactory.fs)
+- [x] [F# fold](Page.fs)
 - [ ] js map
 - [ ] js reduce
 - [ ] error handling
