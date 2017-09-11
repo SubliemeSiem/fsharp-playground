@@ -1,26 +1,27 @@
 namespace FSharpPlayground
 
 module StaticAssets =
-    let title page : string =
-       match page with
-       | "Index" -> "F# & JavaScript SPA"
-       | "Test" -> "Test page"
-       | _ -> "Not found!"
+    type Assets () =
+        static member Title page : string =
+           match page with
+           | "Index" -> "F# & JavaScript SPA"
+           | "Test" -> "Test page"
+           | _ -> "Not found!"
 
-    let styleSheets : string list =
-        ["css/font-awesome.min.css"]
+        static member StyleSheets : string list =
+            ["css/font-awesome.min.css"]
 
-    let scripts : string list =
-        [ "scripts/ajax.js"
-          "scripts/main.js"
-          "scripts/webSocket.js" ]
+        static member Scripts : string list =
+            [ "scripts/ajax.js"
+              "scripts/main.js"
+              "scripts/webSocket.js" ]
 
-    let links : string list =
-        [ "Index"
-          "Test" ]
+        static member Links : string list =
+            [ "Index"
+              "Test" ]
 
-    let inlineStyle : string = 
-        """@font-face { 
+        static member InlineStyle : string = 
+            """        @font-face { 
             font-family: FiraCode; src: url('fonts/FiraCode-Regular.otf'); 
         }
         @font-face {
@@ -35,7 +36,7 @@ module StaticAssets =
         body,
         div,
         span,
-        applet,
+        appstatic member,
         object,
         iframe,
         h1,
