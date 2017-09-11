@@ -17,9 +17,6 @@ module Routing =
                             | Choice1Of2 onlyContent -> OK (Page.ContentResponse (title link) link (content link))
                             | _ -> OK (Page.Html link "/" scripts styleSheets inlineStyle links (content link) messages))
 
-    // handshake opslaan
-    // index teruggeven met response?
-    // meegeven met requests
     let app : WebPart =
         choose 
             [ path "/stream" >=> handShake websocket
